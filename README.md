@@ -25,8 +25,8 @@ This repository contains the benchmarking suite used to quantify the specific tr
 Ensure you have MongoDB Community Server installed and running locally on the default port 27017.
 
 ### 2. Clone Repository
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-cd YOUR_REPO_NAME
+git clone [(https://github.com/tommyt1321/Database-Encryption-Benchmark.git)]
+cd (https://github.com/tommyt1321/Database-Encryption-Benchmark.git)
 
 ### 3. Install Dependencies
 pip install pymongo pycryptodome pandas matplotlib
