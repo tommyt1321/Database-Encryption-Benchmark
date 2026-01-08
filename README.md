@@ -1,29 +1,32 @@
-# Comparative Analysis of Database Encryption: AES vs. RSA
+# Performance Analysis of NoSQL Ingestion Latency for Secure Medical IoT Streams
 
 ## Project Overview
-This project evaluates the performance trade-offs between **Symmetric (AES-256)** and **Asymmetric (RSA-2048)** encryption algorithms for securing sensitive patient data (SSNs) in a SQLite database. 
+This research project investigates the computational overhead of end-to-end encryption on high-velocity NoSQL database ingestion.
 
-It measures three key metrics:
-1. **Execution Latency:** CPU time for encryption/decryption.
-2. **Storage Overhead:** Expansion of database file size.
-3. **Scalability:** Performance impact on batches from 1,000 to 10,000 records.
+In modern healthcare IoT environments, the migration from SQL to NoSQL (MongoDB) is driven by the need for high write throughput and schema flexibility. However, regulatory standards (HIPAA/GDPR) mandate strict encryption, which often acts as a bottleneck.
 
-## Tech Stack
-- **Language:** Python 3.10
-- **Database:** SQLite3
-- **Cryptography:** PyCryptodome (AES-EAX, RSA-OAEP)
-- **Analysis:** Pandas, Matplotlib
+This repository contains the benchmarking suite used to quantify the specific trade-offs between Symmetric (AES-256) and Asymmetric (RSA-2048) encryption when applied to unstructured JSON payloads before ingestion into a MongoDB document store.
 
-## Project Structure
-- `src/generatedummy10kdataset.py`: Generates synthetic patient records.
-- `src/run_performance.py`: Executes the encryption benchmark and logs latency.
-- `src/measure_storage.py`: Calculates file size overhead and expansion ratios.
+## Key Features & NoSQL Utilization
+* **Schema-Agnostic Storage:** Utilizes MongoDB's BSON document structure to store nested IoT sensor data ("vitals" object) without rigid schema constraints.
+* **High-Velocity Simulation:** Implements a Python-based client emulator that generates and ingests synthetic patient records in bulk batches (up to 10,000 records) to test write latency.
+* **Cryptographic Compliance:** Strict implementation of AES-256 (EAX Mode) and RSA-2048 (PKCS#1 OAEP) using the PyCryptodome library.
 
-## Key Findings
-- **AES-256** is significantly faster and more storage-efficient, making it ideal for bulk data encryption.
-- **RSA-2048** incurred massive storage overhead (approx. 40x expansion) and high CPU latency, confirming it is unsuitable for bulk database encryption but useful for key exchange.
+## Technology Stack
+* **Language:** Python 3.10+
+* **Database:** MongoDB Community Server (v8.0+)
+* **Libraries:** * pymongo (Database Driver)
+    * pycryptodome (Security Standards)
+    * pandas & matplotlib (Data Visualization)
 
-## How to Run
-1. Install dependencies:
-   ```bash
-   pip install pandas matplotlib pycryptodome
+## Installation & Setup
+
+### 1. Prerequisites
+Ensure you have MongoDB Community Server installed and running locally on the default port 27017.
+
+### 2. Clone Repository
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+cd YOUR_REPO_NAME
+
+### 3. Install Dependencies
+pip install pymongo pycryptodome pandas matplotlib
